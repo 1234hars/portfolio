@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protected Image</title>
+    <!-- tab icon link -->
+    <link rel="icon" type="image/x-icon" href="./logo.png">
+    <style>
+        /* Reset default margin & padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        /* Image Container */
+        .container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 100%;
+        }
+
+        /* Image Styling */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            pointer-events: none; /* Disables right-click and interaction */
+            -webkit-user-drag: none;
+            user-drag: none;
+        }
+
+        /* Hover Effect */
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Invisible Overlay Protection */
+        .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: transparent;
+            z-index: 2;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            img {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="overlay"></div> <!-- Invisible overlay to prevent interaction -->
+        <img src="./0d008a99-d13a-4b7d-b0c5-4b10ac3d1ff8.png" alt="Protected Image">
+    </div>
+
+    <!-- Disable Right-Click -->
+    <script>
+        document.addEventListener("contextmenu", function (event) {
+            event.preventDefault();
+        });
+    </script>
+
+</body>
+
+</html>
