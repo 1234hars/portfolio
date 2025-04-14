@@ -27,6 +27,7 @@
             /* Light green background */
             color: #333;
             transition: background-color 0.5s ease, color 0.5s ease;
+            padding-top: 70px; /* Add padding to account for fixed navbar */
         }
 
         .dark-mode {
@@ -44,16 +45,30 @@
             font-weight: 600;
         }
 
-        /* Navbar Styling */
+        /* Navbar Styling - Enhanced */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .dark-mode .navbar {
+            background: rgba(18, 18, 18, 0.95);
+        }
+
+        .dark-mode .navbar.scrolled {
+            background: rgba(18, 18, 18, 0.98) !important;
         }
 
         .navbar-nav {
@@ -61,30 +76,76 @@
             font-weight: 100;
         }
 
-        .dark-mode .navbar {
-            background: rgba(18, 18, 18, 0.9);
-        }
-
         .navbar-brand {
             font-size: 1.8rem;
             font-weight: 600;
             color: #46f800 !important;
             font-family: "Tapestry", serif;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
         }
 
         .nav-link {
             font-size: 1rem;
             font-weight: 500;
             color: #333 !important;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            margin: 0 0.25rem;
+            border-radius: 0.5rem;
+            position: relative;
         }
 
         .dark-mode .nav-link {
             color: #f8f9fa !important;
         }
 
-        .nav-link:hover {
+        .nav-link:hover, .nav-link:focus {
             color: #a8f270 !important;
+            background-color: rgba(168, 242, 112, 0.1);
+        }
+
+        .nav-link.active {
+            color: #46f800 !important;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 15%;
+            width: 70%;
+            height: 2px;
+            background-color: #46f800;
+            border-radius: 2px;
+        }
+
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+            outline: none;
+        }
+
+        .navbar-toggler-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-toggler.collapsed .navbar-toggler-icon {
+            transform: rotate(0deg);
+        }
+
+        .navbar-toggler:not(.collapsed) .navbar-toggler-icon {
+            transform: rotate(90deg);
         }
 
         /* Section Titles */
@@ -198,25 +259,53 @@
             }
         }
 
-        /* Mobile Navigation */
+        /* Mobile Navigation - Enhanced */
         @media (max-width: 992px) {
             .navbar-collapse {
-                background: rgba(255, 255, 255, 0.95);
-                padding: 20px;
+                background: rgba(255, 255, 255, 0.98);
+                padding: 1rem;
                 border-radius: 10px;
                 margin-top: 10px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                max-height: 70vh;
+                overflow-y: auto;
             }
             
             .dark-mode .navbar-collapse {
-                background: rgba(18, 18, 18, 0.95);
+                background: rgba(18, 18, 18, 0.98);
             }
             
             .navbar-nav {
                 text-align: center;
+                padding: 0.5rem 0;
             }
             
             .nav-item {
-                margin: 5px 0;
+                margin: 0.5rem 0;
+            }
+            
+            .nav-link {
+                padding: 0.75rem 1rem;
+                margin: 0;
+                display: block;
+            }
+            
+            .nav-link.active::after {
+                display: none;
+            }
+            
+            .navbar-toggler {
+                order: 1;
+            }
+            
+            .navbar-brand {
+                order: 0;
+                margin-right: auto;
+            }
+            
+            .mode-toggle-container {
+                order: 2;
+                margin-left: 1rem;
             }
         }
 
@@ -310,22 +399,26 @@
                 padding-left: 15px;
                 padding-right: 15px;
             }
+            
+            body {
+                padding-top: 60px; /* Adjust for smaller navbar height on mobile */
+            }
         }
     </style>
 </head>
 
 <body>
-    <!-- Navbar -->
+    <!-- Navbar - Enhanced -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><strong>|-|< </strong></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                <a class="navbar-brand" href="#home"><strong>|-|< </strong></a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="bi bi-list"></i>
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                    <ul class="navbar-nav">
+                <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
                             <a class="nav-link active" href="#home">Home</a>
                         </li>
@@ -352,8 +445,8 @@
                         </li>
                     </ul>
                 </div>
-                <!-- Dark Mode Toggle -->
-                <div>
+                <!-- Dark Mode Toggle - Moved inside navbar-collapse for better mobile handling -->
+                <div class="mode-toggle-container d-flex align-items-center">
                     <i id="modeToggle" class="bi bi-brightness-high-fill mode-toggle"></i>
                 </div>
             </div>
@@ -572,8 +665,9 @@
         integrity="sha384-r5B6JdMGDhy9hK6z5fCH4iHH0O5l84NRl9aGJ2zSxCk94siEhChp8UbiNjPoHj5P"
         crossorigin="anonymous"></script>
 
-    <!-- Dark Mode Script -->
+    <!-- Enhanced JavaScript for Navbar Functionality -->
     <script>
+        // Dark Mode Toggle
         const modeToggle = document.getElementById("modeToggle");
         const body = document.body;
 
@@ -593,6 +687,96 @@
                 localStorage.setItem("theme", "light");
             }
         });
+
+        // Navbar Scroll Effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Close navbar if mobile menu is open
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                            toggle: false
+                        });
+                        bsCollapse.hide();
+                    }
+                    
+                    // Scroll to target
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70, // Account for fixed navbar height
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active nav link
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Update active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Initialize active link based on current position
+        function setInitialActiveLink() {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Call on page load
+        document.addEventListener('DOMContentLoaded', setInitialActiveLink);
     </script>
 </body>
 
