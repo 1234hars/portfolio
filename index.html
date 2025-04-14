@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -103,6 +102,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
         }
 
         .card:hover {
@@ -178,6 +178,139 @@
         .dark-mode .text-adaptive {
             color: #adb5bd;
         }
+
+        /* Responsive Typography */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2.section-title {
+                font-size: 1.8rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+            
+            .lead {
+                font-size: 1rem;
+            }
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 992px) {
+            .navbar-collapse {
+                background: rgba(255, 255, 255, 0.95);
+                padding: 20px;
+                border-radius: 10px;
+                margin-top: 10px;
+            }
+            
+            .dark-mode .navbar-collapse {
+                background: rgba(18, 18, 18, 0.95);
+            }
+            
+            .navbar-nav {
+                text-align: center;
+            }
+            
+            .nav-item {
+                margin: 5px 0;
+            }
+        }
+
+        /* Home Section Adjustments */
+        @media (max-width: 768px) {
+            #home .d-flex {
+                flex-direction: column;
+                gap: 10px !important;
+            }
+            
+            #home .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Gallery and Certificates Grid */
+        @media (max-width: 768px) {
+            .gallery-img {
+                height: 150px;
+            }
+            
+            #certificates .col-md-4,
+            #projects .col-md-4 {
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Contact Form */
+        @media (max-width: 576px) {
+            #contact .col-md-6 {
+                padding: 0 15px;
+            }
+            
+            .form-control {
+                padding: 8px;
+            }
+        }
+
+        /* Button Group Responsiveness */
+        .btn-group-responsive {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        @media (max-width: 576px) {
+            .btn-group-responsive {
+                flex-direction: column;
+            }
+            
+            .btn-group-responsive .btn {
+                margin-bottom: 10px;
+                width: 100%;
+            }
+        }
+
+        /* Footer Adjustments */
+        @media (max-width: 576px) {
+            footer .container {
+                padding: 0 15px;
+            }
+            
+            footer p {
+                margin-bottom: 15px;
+            }
+        }
+
+        /* Image Responsiveness */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Mobile-specific padding */
+        @media (max-width: 768px) {
+            section {
+                padding: 30px 0 !important;
+            }
+            
+            .py-5 {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+        }
+
+        /* Ensure proper spacing on mobile */
+        @media (max-width: 576px) {
+            .container-fluid {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
     </style>
 </head>
 
@@ -228,23 +361,23 @@
     </header>
 
     <!-- Main Content -->
-    <main class="container mt-5">
+    <main class="container mt-5 pt-4">
         <!-- Home Section -->
         <section id="home" class="my-5 py-5">
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center">
                     <img src="./cfd15f47-eaea-40ac-878b-cb34de840849.png" class="rounded-circle mb-3" width="200"
-                        height="200" alt="Profile Image">
+                        height="200" alt="Profile Image" loading="lazy">
                     <h1 class="mb-3">Harsh Kumar</h1>
                     <p class="lead text-adaptive">Business Development Executive | Movidu Technology</p>
                     <p class="text-adaptive">Hi, I'm Harsh Kumar, a passionate Business Development Executive with a
                         strong background in web development and software testing. Currently pursuing my Master of
                         Computer Applications (MCA).</p>
-                    <div class="d-flex justify-content-center gap-3">
-                        <a href="https://1234hars.github.io/portfolio/" target="_blank"><button class="btn btn-outline-primary">Share</button></a>
-                        <button class="btn btn-primary" >Contact</button>
-                        <a href="./cv.pdf" class="btn btn-primary" download>Download CV</a>
-                        <a href="./cv.pdf" class="btn btn-outline-primary" target="_blank">View CV</a>
+                    <div class="d-flex justify-content-center btn-group-responsive">
+                        <button class="btn btn-outline-primary">Share</button>
+                        <button class="btn btn-primary">Contact</button>
+                        <a href="./cv v.pdf" class="btn btn-primary" download>Download CV</a>
+                        <a href="./cv v.pdf" class="btn btn-outline-primary" target="_blank">View CV</a>
                         <a href="#certificates" class="btn btn-outline-primary">Certificates</a>
                     </div>
                 </div>
@@ -255,7 +388,7 @@
         <section id="about" class="my-5 py-5">
             <h2 class="section-title">About Me</h2>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 mb-4 mb-md-0">
                     <p class="lead text-adaptive">I am a dedicated professional with expertise in business development,
                         web development, and software testing. My goal is to leverage my skills to drive growth and
                         innovation in the tech industry </p>
@@ -272,8 +405,8 @@
         <section id="experience" class="my-5 py-5">
             <h2 class="section-title">Experience</h2>
             <div class="row">
-                <div class="col-md-6">
-                    <div class="card mb-4">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
                         <div class="card-body">
                             <h5 class="card-title">Frontend Development</h5>
                             <ul class="list-group list-group-flush">
@@ -285,8 +418,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card mb-4">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
                         <div class="card-body">
                             <h5 class="card-title">Backend Development</h5>
                             <ul class="list-group list-group-flush">
@@ -306,8 +439,8 @@
             <h2 class="section-title">Projects</h2>
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="https://via.placeholder.com/300" class="card-img-top" alt="Project 1">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/300" class="card-img-top" alt="Project 1" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title">Project 1</h5>
                             <p class="card-text">A brief description of the project goes here.</p>
@@ -316,8 +449,8 @@
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="https://via.placeholder.com/300" class="card-img-top" alt="Project 2">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/300" class="card-img-top" alt="Project 2" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title">Project 2</h5>
                             <p class="card-text">A brief description of the project goes here.</p>
@@ -326,8 +459,8 @@
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="https://via.placeholder.com/300" class="card-img-top" alt="Project 3">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/300" class="card-img-top" alt="Project 3" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title">Project 3</h5>
                             <p class="card-text">A brief description of the project goes here.</p>
@@ -336,7 +469,7 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center">
+            <div class="text-center mt-3">
                 <a href="/projects.html" class="btn btn-outline-primary">View More Projects</a>
             </div>
         </section>
@@ -347,16 +480,16 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <img src="./5808d2e5-bef1-439d-93b4-5b695d9345b1.png" class="gallery-img" alt="Gallery Image 1"
-                        height="100%" width="100%">
+                        height="100%" width="100%" loading="lazy">
                 </div>
                 <div class="col-md-4 mb-4">
-                    <img src="./0d008a99-d13a-4b7d-b0c5-4b10ac3d1ff8.png" class="gallery-img" alt="Gallery Image 2">
+                    <img src="./0d008a99-d13a-4b7d-b0c5-4b10ac3d1ff8.png" class="gallery-img" alt="Gallery Image 2" loading="lazy">
                 </div>
                 <div class="col-md-4 mb-4">
-                    <img src="./1b39692b-ca3b-46b1-8350-45a77f7990b3.png" class="gallery-img" alt="Gallery Image 3">
+                    <img src="./1b39692b-ca3b-46b1-8350-45a77f7990b3.png" class="gallery-img" alt="Gallery Image 3" loading="lazy">
                 </div>
             </div>
-            <div class="text-center">
+            <div class="text-center mt-3">
                 <a href="./galery.html" class="btn btn-outline-primary">View More Gallery</a>
             </div>
         </section>
@@ -366,44 +499,33 @@
             <h2 class="section-title">Certificates</h2>
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="./1717169222723.jpeg" class="card-img-top" alt="Certificate 1">
+                    <div class="card h-100">
+                        <img src="./1717169222723.jpeg" class="card-img-top" alt="Certificate 1" loading="lazy">
                         <div class="card-body">
-                            <h5 class="card-title">“React Basics” course, authorized by Meta and offered through Coursera.</h5>
-                            <!-- <p class="card-text">🔍 What I Learned:
-                            
-                            Foundations of React: Dive into the core concepts of React, including components, state management, and lifecycle
-                            methods.
-                            Building User Interfaces: Learn how to create dynamic and interactive UIs using React.
-                            Hands-On Projects: Applied my knowledge to real-world projects, enhancing my skills.
-                            📅 Completion Date: May 31, 2024
-                            
-                            🔗 Verification Link:https://lnkd.in/gXd--KGd -->
+                            <h5 class="card-title">"React Basics" course, authorized by Meta and offered through Coursera.</h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="./1722270291875.jpeg" class="card-img-top" alt="Certificate 2">
+                    <div class="card h-100">
+                        <img src="./1722270291875.jpeg" class="card-img-top" alt="Certificate 2" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title">6-week live internship in Full Stack Web Development at Techvanto Academy in New Delhi. From June 5th to July 20th, 2024</h5>
-                            <p class="card-text"><!--Description of the certificate goes here.--></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="./1711808675968.jpeg" class="card-img-top" alt="Certificate 3">
+                    <div class="card h-100">
+                        <img src="./1711808675968.jpeg" class="card-img-top" alt="Certificate 3" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title">short-term course on "Researcher's Toolkit: A Course on LaTeX, Overleaf, Mendeley and Seaborn for Sustainable Research"
                             organized by Lovely Professional University.</h5>
-                            <p class="card-text"><!--Description of the certificate goes here.--></p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="text-center">
-                <a href="./certificate.html" class="btn btn-outline-primary">View More Certificates</a>
+            <div class="text-center mt-3">
+                <a href="/certificate.html" class="btn btn-outline-primary">View More Certificates</a>
             </div>
         </section>
 
@@ -411,7 +533,7 @@
         <section id="contact" class="my-5 py-5">
             <h2 class="section-title">Contact Me</h2>
             <div class="row justify-content-center">
-                <div class="col-md-6">
+                <div class="col-md-8 col-lg-6">
                     <form>
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
@@ -425,7 +547,7 @@
                             <label for="message" class="form-label">Message</label>
                             <textarea class="form-control" id="message" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
                     </form>
                 </div>
             </div>
@@ -439,6 +561,7 @@
             <div>
                 <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
                 <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
             </div>
         </div>
